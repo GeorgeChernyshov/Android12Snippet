@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Android12Snippet-post31</string>
+
+    <!-- screen labels -->
+    <string name="label_user_experience">User Experience</string>
+
+    <!-- user experience -->
+    <string name="user_experience_overscroll_glow">Glow should appear on overscroll</string>
+    <string name="user_experience_overscroll_stretch">Text should be stretched on overscroll</string>
+</resources>
