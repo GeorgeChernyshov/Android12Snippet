@@ -5,6 +5,18 @@
     <string name="label_user_experience">User Experience</string>
 
     <!-- user experience -->
-    <string name="user_experience_overscroll_glow">Glow should appear on overscroll</string>
-    <string name="user_experience_overscroll_stretch">Text should be stretched on overscroll</string>
+    <string name="ux_display_metrics_title">Display metrics</string>
+    <string name="ux_immersive_mode_exit">Exit immersive mode</string>
+    <string name="ux_immersive_mode_title">Immersive Mode Test</string>
+    <string name="ux_immersive_mode_show_bars_by_swipe">Show bars by swipe</string>
+    <string name="ux_immersive_mode_show_bars_by_touch">Show bars by touch</string>
+    <string name="ux_immersive_mode_show_transient_bars">Show transient bars</string>
+    <string name="ux_overscroll_glow">Glow should appear on overscroll</string>
+    <string name="ux_overscroll_stretch">Text should be stretched on overscroll</string>
+
+    <!-- web view -->
+    <string name="web_hint_all">This Activity should open all URLs</string>
+    <string name="web_hint_twitch">This Activity should only open twitch links</string>
+    <string name="web_open_google">Open Google link</string>
+    <string name="web_open_twitch">Open Twitch link</string>
 </resources>

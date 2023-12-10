@@ -1,21 +1,33 @@
 package com.example.post31.ui.screen
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
+import android.view.Display
+import android.view.Window
+import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.example.post31.R
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.navigation.Screen
@@ -26,10 +38,14 @@ fun UserExperienceScreen() {
         topBar = { AppBar(name = stringResource(id = Screen.UserExperience.resourceId)) },
         content = {
             Column(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
                     .padding(16.dp)
             ) {
                 ScrollDemoBlock()
+                WebIntentBlock(Modifier.padding(top = 16.dp))
+                ImmersiveModeBlock(Modifier.padding(top = 16.dp))
+                DisplaySizeBlock(Modifier.padding(top = 16.dp))
             }
         }
     )
@@ -45,11 +61,99 @@ fun ScrollDemoBlock() {
     ) {
         repeat(10) {
             val stringId = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-                R.string.user_experience_overscroll_stretch
-            else R.string.user_experience_overscroll_glow
+                R.string.ux_overscroll_stretch
+            else R.string.ux_overscroll_glow
 
             Text(stringResource(id = stringId))
         }
+    }
+}
+
+@Composable
+fun WebIntentBlock(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+
+    Column(modifier) {
+        Button(
+            onClick = {
+                context.startActivity(
+                    createWebIntent("https://www.google.com/search?q=random+number+generator")
+                )
+            }
+        ) {
+            Text(text = stringResource(id = R.string.web_open_google))
+        }
+
+        Button(
+            modifier = Modifier.padding(top = 16.dp),
+            onClick = {
+                context.startActivity(
+                    createWebIntent("https://www.twitch.tv/piemka")
+                )
+            }
+        ) {
+            Text(text = stringResource(id = R.string.web_open_twitch))
+        }
+    }
+}
+
+@Composable
+fun ImmersiveModeBlock(modifier: Modifier = Modifier) {
+    val window = (LocalContext.current as Activity).window
+
+    Column(modifier) {
+        Text(text = stringResource(id = R.string.ux_immersive_mode_title))
+        Button(
+            onClick = {
+                enterImmersiveMode(
+                    window,
+                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_BARS_BY_TOUCH
+                )
+            }
+        ) {
+            Text(text = stringResource(id = R.string.ux_immersive_mode_show_bars_by_touch))
+        }
+
+        Button(
+            onClick = {
+                enterImmersiveMode(
+                    window,
+                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_BARS_BY_SWIPE
+                )
+            }
+        ) {
+            Text(text = stringResource(id = R.string.ux_immersive_mode_show_bars_by_swipe))
+        }
+
+        Button(
+            onClick = {
+                enterImmersiveMode(
+                    window,
+                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                )
+            }
+        ) {
+            Text(text = stringResource(id = R.string.ux_immersive_mode_show_transient_bars))
+        }
+
+        Button(onClick = { exitImmersiveMode(window) }) {
+            Text(text = stringResource(id = R.string.ux_immersive_mode_exit))
+        }
+    }
+}
+
+@Composable
+fun DisplaySizeBlock(modifier: Modifier = Modifier) {
+    val windowManager = LocalContext.current.getSystemService(WindowManager::class.java)
+    
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        Column(modifier) {
+            Text(text = stringResource(id = R.string.ux_display_metrics_title))
+
+            Text(text = "Width = ${windowManager.currentWindowMetrics.bounds.width()}")
+            
+            Text(text = "Height = ${windowManager.currentWindowMetrics.bounds.height()}")
+        }   
     }
 }
 
@@ -57,4 +161,45 @@ fun ScrollDemoBlock() {
 @Composable
 fun ScrollDemoBlockPreview() {
     ScrollDemoBlock()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun WebIntentBlockPreview(modifier: Modifier = Modifier) {
+    WebIntentBlock()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ImmersiveModeBlockPreview() {
+    ImmersiveModeBlock()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DisplaySizeBlockPreview() {
+    DisplaySizeBlock()
+}
+
+fun createWebIntent(
+    uriString: String
+) = Intent.createChooser(
+    Intent(
+        Intent.ACTION_VIEW,
+        Uri.parse(uriString)
+    ),
+    "Open in"
+)
+
+fun enterImmersiveMode(window: Window, behavior: Int) {
+    val windowInsetsController =
+        WindowCompat.getInsetsController(window, window.decorView)
+    // Configure the behavior of the hidden system bars.
+    windowInsetsController.systemBarsBehavior = behavior
+    windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+}
+
+fun exitImmersiveMode(window: Window) {
+    WindowCompat.getInsetsController(window, window.decorView)
+        .show(WindowInsetsCompat.Type.systemBars())
 }

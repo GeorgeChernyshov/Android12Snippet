@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Android12Snippet-pre31</string>
+
+    <!-- screen labels -->
+    <string name="label_web_intent">Web Intents</string>
+
+    <!-- User experience -->
+    <string name="ux_display_metrics_title">Display metrics</string>
+
+    <!-- web view -->
+    <string name="web_hint_all">This Activity should open all URLs</string>
+    <string name="web_hint_twitch">This Activity should only open twitch links</string>
+    <string name="web_open_google">Open Google link</string>
+    <string name="web_open_twitch">Open Twitch link</string>
 </resources>
