@@ -2,7 +2,10 @@
     <string name="app_name">Android12Snippet-pre31</string>
 
     <!-- screen labels -->
-    <string name="label_web_intent">Web Intents</string>
+    <string name="label_user_experience">User Experience</string>
+
+    <!-- splash hint -->
+    <string name="splash_hint">Check the code - the splash screen is custom-made and makes the app logic more complex.</string>
 
     <!-- User experience -->
     <string name="ux_display_metrics_title">Display metrics</string>

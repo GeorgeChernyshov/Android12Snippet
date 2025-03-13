@@ -4,10 +4,15 @@
     <!-- screen labels -->
     <string name="label_user_experience">User Experience</string>
 
+    <!-- splash hint -->
+    <string name="splash_hint">Have you noticed the new and cool splash screen?</string>
+
     <!-- user experience -->
     <string name="ux_display_metrics_title">Display metrics</string>
     <string name="ux_immersive_mode_exit">Exit immersive mode</string>
-    <string name="ux_immersive_mode_title">Immersive Mode Test</string>
+    <string name="ux_immersive_mode_hint_post31">Show bars by touch and by swipe is the same thing</string>
+    <string name="ux_immersive_mode_hint_pre31">Show bars by touch and by swipe are different and weird</string>
+    <string name="ux_immersive_mode_title">Immersive Mode Test - enable gesture navigation and press these buttons!</string>
     <string name="ux_immersive_mode_show_bars_by_swipe">Show bars by swipe</string>
     <string name="ux_immersive_mode_show_bars_by_touch">Show bars by touch</string>
     <string name="ux_immersive_mode_show_transient_bars">Show transient bars</string>
@@ -18,5 +23,11 @@
     <string name="web_hint_all">This Activity should open all URLs</string>
     <string name="web_hint_twitch">This Activity should only open twitch links</string>
     <string name="web_open_google">Open Google link</string>
+    <string name="web_open_google_hint">Google link should open as usual</string>
     <string name="web_open_twitch">Open Twitch link</string>
+    <string name="web_open_twitch_hint_post31">Twitch link should open in app</string>
+    <string name="web_open_twitch_hint_pre31">A chooser with several options should open</string>
+    <string name="web_request_association">Associate your app with the domains declared in manifest if needed</string>
+    <string name="web_request_association_button">Associate</string>
+    <string name="web_title">Web Intents changes</string>
 </resources>

@@ -4,18 +4,22 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.provider.Settings
 import android.view.Display
 import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -37,15 +41,31 @@ fun UserExperienceScreen() {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.UserExperience.resourceId)) },
         content = {
-            Column(
+            LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                ScrollDemoBlock()
-                WebIntentBlock(Modifier.padding(top = 16.dp))
-                ImmersiveModeBlock(Modifier.padding(top = 16.dp))
-                DisplaySizeBlock(Modifier.padding(top = 16.dp))
+                item {
+                    Text(stringResource(R.string.splash_hint))
+                }
+
+                item {
+                    ScrollDemoBlock()
+                }
+
+                item {
+                    WebIntentBlock()
+                }
+
+                item {
+                    ImmersiveModeBlock()
+                }
+
+                item {
+                    DisplaySizeBlock()
+                }
             }
         }
     )
@@ -73,26 +93,61 @@ fun ScrollDemoBlock() {
 fun WebIntentBlock(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
-    Column(modifier) {
-        Button(
-            onClick = {
-                context.startActivity(
-                    createWebIntent("https://www.google.com/search?q=random+number+generator")
-                )
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        Text(
+            text = stringResource(R.string.web_title),
+            modifier = Modifier.fillMaxWidth(),
+            style = MaterialTheme.typography.h6
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Column(Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.web_request_association))
+                Button(onClick = {
+                    val intent = Intent(
+                        Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
+                        Uri.parse("package:${context.packageName}")
+                    )
+
+                    context.startActivity(intent)
+                }) {
+                    Text(stringResource(R.string.web_request_association_button))
+                }
             }
-        ) {
-            Text(text = stringResource(id = R.string.web_open_google))
         }
 
-        Button(
-            modifier = Modifier.padding(top = 16.dp),
-            onClick = {
-                context.startActivity(
-                    createWebIntent("https://www.twitch.tv/piemka")
-                )
+        Column {
+            Text(stringResource(R.string.web_open_google_hint))
+            Button(
+                onClick = {
+                    context.startActivity(
+                        createWebIntent("https://www.google.com/search?q=random+number+generator")
+                    )
+                }
+            ) {
+                Text(text = stringResource(id = R.string.web_open_google))
             }
-        ) {
-            Text(text = stringResource(id = R.string.web_open_twitch))
+        }
+
+        Column {
+            Text(text = stringResource(id =
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                    R.string.web_open_twitch_hint_post31
+                else R.string.web_open_twitch_hint_pre31
+            ))
+
+            Button(
+                onClick = {
+                    context.startActivity(
+                        createWebIntent("https://www.twitch.tv/piemka")
+                    )
+                }
+            ) {
+                Text(text = stringResource(id = R.string.web_open_twitch))
+            }
         }
     }
 }
@@ -103,6 +158,12 @@ fun ImmersiveModeBlock(modifier: Modifier = Modifier) {
 
     Column(modifier) {
         Text(text = stringResource(id = R.string.ux_immersive_mode_title))
+        Text(text = stringResource(id =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                R.string.ux_immersive_mode_hint_post31
+            else R.string.ux_immersive_mode_hint_pre31
+        ))
+
         Button(
             onClick = {
                 enterImmersiveMode(

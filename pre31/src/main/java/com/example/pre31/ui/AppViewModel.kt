@@ -8,7 +8,7 @@ import com.example.pre31.ui.navigation.Screen
 
 class AppViewModel : ViewModel() {
 
-    private val _currentScreen: MutableState<Screen> = mutableStateOf(Screen.WebIntent)
+    private val _currentScreen: MutableState<Screen> = mutableStateOf(Screen.UserExperience)
     val currentScreen: State<Screen>
         get() = _currentScreen
 
