@@ -6,6 +6,8 @@
     <!-- notifications -->
     <string name="notification_channel_name">Notification channel</string>
     <string name="notification_channel_description">Notification channel description</string>
+    <string name="notification_title">My Notification</string>
+    <string name="notification_text">Notification text</string>
     
     <!-- performance -->
     <string name="performance_location">Your location log</string>
@@ -26,6 +28,8 @@
     <string name="splash_hint">Have you noticed the new and cool splash screen?</string>
 
     <!-- user experience -->
+    <string name="ux_custom_notification_button">Show custom notification</string>
+    <string name="ux_custom_notification_hint">Custom notifications have a specific area they can manage now instead of being able to customize the entire notification widget</string>
     <string name="ux_display_metrics_title">Display metrics</string>
     <string name="ux_immersive_mode_exit">Exit immersive mode</string>
     <string name="ux_immersive_mode_hint_post31">Show bars by touch and by swipe is the same thing</string>

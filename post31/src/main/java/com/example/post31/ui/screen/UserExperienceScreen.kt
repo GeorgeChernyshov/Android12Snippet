@@ -33,6 +33,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.post31.R
+import com.example.post31.helper.NotificationHelper
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.navigation.Screen
 
@@ -65,6 +66,10 @@ fun UserExperienceScreen(onNextClick: () -> Unit) {
 
                 item {
                     DisplaySizeBlock()
+                }
+
+                item {
+                    CustomNotificationBlock()
                 }
 
                 item {
@@ -224,6 +229,20 @@ fun DisplaySizeBlock(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun CustomNotificationBlock() {
+    val context = LocalContext.current
+    val notificationHelper = NotificationHelper(context)
+
+    Column {
+        Text(stringResource(R.string.ux_custom_notification_hint))
+
+        Button(onClick = { notificationHelper.showCustomNotification() }) {
+            Text(stringResource(R.string.ux_custom_notification_button))
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun ScrollDemoBlockPreview() {
@@ -246,6 +265,12 @@ fun ImmersiveModeBlockPreview() {
 @Composable
 fun DisplaySizeBlockPreview() {
     DisplaySizeBlock()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CustomNotificationBlockPreview() {
+    CustomNotificationBlock()
 }
 
 fun createWebIntent(

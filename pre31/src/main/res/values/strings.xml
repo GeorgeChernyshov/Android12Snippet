@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Android12Snippet-pre31</string>
 
+    <!-- notifications -->
+    <string name="notification_channel_name">Notification channel</string>
+    <string name="notification_channel_description">Notification channel description</string>
+    <string name="notification_title">My Notification</string>
+    <string name="notification_text">Notification text</string>
+
     <!-- screen labels -->
     <string name="label_user_experience">User Experience</string>
 
@@ -8,6 +14,8 @@
     <string name="splash_hint">Check the code - the splash screen is custom-made and makes the app logic more complex.</string>
 
     <!-- User experience -->
+    <string name="ux_custom_notification_button">Show custom notification</string>
+    <string name="ux_custom_notification_hint">Custom notifications can look like anything</string>
     <string name="ux_display_metrics_title">Display metrics</string>
 
     <!-- web view -->
