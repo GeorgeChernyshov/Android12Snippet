@@ -1,7 +1,25 @@
 <resources>
     <string name="app_name">Android12Snippet-post31</string>
 
+    <string name="button_next">Next</string>
+
+    <!-- notifications -->
+    <string name="notification_channel_name">Notification channel</string>
+    <string name="notification_channel_description">Notification channel description</string>
+    
+    <!-- performance -->
+    <string name="performance_location">Your location log</string>
+    <string name="performance_location_column">Location</string>
+    <string name="performance_location_updates_start">Start Location Updates</string>
+    <string name="performance_location_updates_stop">Stop Location Updates</string>
+    <string name="performance_power_saver_hint">Try starting location updates, then turn on battery saver and exit the app.</string>
+    <string name="performance_power_saver_no">Your device should stop giving location updates</string>
+    <string name="performance_power_saver_undefined">Your device might continue giving location updates</string>
+    <string name="performance_power_saver_yes">Your device should continue giving location updates</string>
+    <string name="performance_time_column">Timestamp</string>
+
     <!-- screen labels -->
+    <string name="label_performance">Performance</string>
     <string name="label_user_experience">User Experience</string>
 
     <!-- splash hint -->

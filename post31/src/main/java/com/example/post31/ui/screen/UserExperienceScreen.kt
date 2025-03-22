@@ -37,7 +37,7 @@ import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.navigation.Screen
 
 @Composable
-fun UserExperienceScreen() {
+fun UserExperienceScreen(onNextClick: () -> Unit) {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.UserExperience.resourceId)) },
         content = {
@@ -65,6 +65,12 @@ fun UserExperienceScreen() {
 
                 item {
                     DisplaySizeBlock()
+                }
+
+                item {
+                    Button(onClick = onNextClick) {
+                        Text(stringResource(R.string.button_next))
+                    }
                 }
             }
         }
