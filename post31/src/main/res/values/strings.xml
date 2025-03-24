@@ -8,7 +8,7 @@
     <string name="notification_channel_description">Notification channel description</string>
     <string name="notification_title">My Notification</string>
     <string name="notification_text">Notification text</string>
-    
+
     <!-- performance -->
     <string name="performance_location">Your location log</string>
     <string name="performance_location_column">Location</string>
@@ -23,6 +23,7 @@
     <!-- screen labels -->
     <string name="label_performance">Performance</string>
     <string name="label_user_experience">User Experience</string>
+    <string name="label_widgets">Widgets and Notifications</string>
 
     <!-- splash hint -->
     <string name="splash_hint">Have you noticed the new and cool splash screen?</string>
@@ -52,4 +53,7 @@
     <string name="web_request_association">Associate your app with the domains declared in manifest if needed</string>
     <string name="web_request_association_button">Associate</string>
     <string name="web_title">Web Intents changes</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>

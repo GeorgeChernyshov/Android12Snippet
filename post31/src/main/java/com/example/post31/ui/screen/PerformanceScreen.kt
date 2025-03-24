@@ -24,6 +24,7 @@ import com.example.post31.interactor.PermissionInteractor
 import com.example.post31.service.GeolocationService
 import com.example.post31.service.GeolocationService.GeolocationServiceState.Status
 import com.example.post31.ui.components.AppBar
+import com.example.post31.ui.components.LocationTableRow
 import com.example.post31.ui.navigation.Screen
 import kotlinx.coroutines.flow.StateFlow
 
