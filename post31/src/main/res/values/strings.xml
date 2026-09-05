@@ -27,6 +27,14 @@
     <string name="label_user_experience">User Experience</string>
     <string name="label_widgets">Widgets and Notifications</string>
 
+    <!-- security and privacy -->
+    <string name="security_mic_and_camera_toggles_description">Starting with Android 12, when an app accesses microphone or camera, an icon appears in the status bar. Also, in Quick Access menu, there should be a toggle that immediately turns off microphone or camera for all apps currently running on the device. Handy if you don\'t know which app accesses them.</string>
+    <string name="security_mic_indicator">You should see the indicator in your status bar.</string>
+    <string name="security_mic_no_indicator">Recording should start with no indication to the user.</string>
+    <string name="security_mic_toggle">Check your Quick Settings. You might see the disable access button. Some manufacturers hide it by default though, so you will have to add it manually.</string>
+    <string name="security_start_recording">Start recording</string>
+    <string name="security_stop_recording">Stop recording</string>
+
     <!-- splash hint -->
     <string name="splash_hint">Have you noticed the new and cool splash screen?</string>
 
