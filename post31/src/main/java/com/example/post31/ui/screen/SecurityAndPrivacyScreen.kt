@@ -2,6 +2,7 @@ package com.example.post31.ui.screen
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -25,6 +27,9 @@ import com.example.post31.helper.AudioRecorder
 import com.example.post31.interactor.PermissionInteractor
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.navigation.Screen
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun SecurityAndPrivacyScreen() {
@@ -38,6 +43,7 @@ fun SecurityAndPrivacyScreen() {
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 MicrophoneAccessBlock()
+                CloseSystemDialogsBlock()
             }
         }
     )
@@ -90,5 +96,32 @@ fun MicrophoneAccessBlock() {
                 Text(stringResource(R.string.security_mic_no_indicator))
             }
         }
+    }
+}
+
+@Composable
+@SuppressLint("MissingPermission")
+fun CloseSystemDialogsBlock() {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+
+    Column {
+        Text(stringResource(R.string.security_close_system_dialogs_description))
+
+        Button(onClick = {
+            scope.launch {
+                delay(3.seconds)
+                val intent = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
+                context.sendBroadcast(intent)
+            }
+        }) {
+            Text(stringResource(R.string.security_close_system_dialogs_button))
+        }
+
+        Text(stringResource(
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                R.string.security_close_system_dialogs_fail
+            else R.string.security_close_system_dialogs_success
+        ))
     }
 }
