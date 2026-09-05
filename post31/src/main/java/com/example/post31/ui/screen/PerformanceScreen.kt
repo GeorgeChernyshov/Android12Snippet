@@ -30,7 +30,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun PerformanceScreen(
-    locationServiceState: StateFlow<GeolocationService.GeolocationServiceState>?
+    locationServiceState: StateFlow<GeolocationService.GeolocationServiceState>?,
+    onNextClick: () -> Unit
 ) {
     val context = LocalContext.current
         .applicationContext
@@ -65,6 +66,12 @@ fun PerformanceScreen(
                     )
                 }
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    item {
+                        Text(stringResource(R.string.performance_location_new_dialog))
+                    }
+                }
+
                 item {
                     LocationTableRow(
                         location = stringResource(id = R.string.performance_location_column),
@@ -78,6 +85,12 @@ fun PerformanceScreen(
                             location = location.locationString,
                             timestamp = location.timeString
                         )
+                    }
+                }
+
+                item {
+                    Button(onClick = onNextClick) {
+                        Text(stringResource(R.string.button_next))
                     }
                 }
             }

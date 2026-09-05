@@ -17,6 +17,7 @@ import com.example.post31.service.GeolocationService
 import com.example.post31.ui.AppViewModel
 import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.screen.PerformanceScreen
+import com.example.post31.ui.screen.SecurityAndPrivacyScreen
 import com.example.post31.ui.screen.UserExperienceScreen
 import com.example.post31.ui.screen.WidgetsScreen
 import com.example.post31.ui.theme.Android12SnippetTheme
@@ -75,7 +76,14 @@ fun App(
                 }
             )
 
-            Screen.Performance -> PerformanceScreen(binder()?.state)
+            Screen.Performance -> PerformanceScreen(
+                locationServiceState = binder()?.state,
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.SecurityAndPrivacy)
+                }
+            )
+
+            Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen()
             Screen.Widgets -> WidgetsScreen()
         }
     }

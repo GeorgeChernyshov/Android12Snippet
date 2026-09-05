@@ -12,6 +12,7 @@
     <!-- performance -->
     <string name="performance_location">Your location log</string>
     <string name="performance_location_column">Location</string>
+    <string name="performance_location_new_dialog">By the way, check the new cool location permission request dialog Android 12 introduced!</string>
     <string name="performance_location_updates_start">Start Location Updates</string>
     <string name="performance_location_updates_stop">Stop Location Updates</string>
     <string name="performance_power_saver_hint">Try starting location updates, then turn on battery saver and exit the app.</string>
@@ -22,6 +23,7 @@
 
     <!-- screen labels -->
     <string name="label_performance">Performance</string>
+    <string name="label_security_and_privacy">Security and Privacy</string>
     <string name="label_user_experience">User Experience</string>
     <string name="label_widgets">Widgets and Notifications</string>
 

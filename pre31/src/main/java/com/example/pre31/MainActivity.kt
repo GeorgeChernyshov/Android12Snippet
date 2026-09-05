@@ -8,6 +8,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pre31.ui.AppViewModel
 import com.example.pre31.ui.navigation.Screen
+import com.example.pre31.ui.screen.SecurityAndPrivacyScreen
 import com.example.pre31.ui.screen.UserExperienceScreen
 import com.example.pre31.ui.theme.Android12SnippetTheme
 
@@ -25,7 +26,12 @@ fun App(
     Android12SnippetTheme {
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
-            is Screen.UserExperience -> UserExperienceScreen()
+            Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen()
+            Screen.UserExperience -> UserExperienceScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.SecurityAndPrivacy)
+                }
+            )
         }
     }
 }

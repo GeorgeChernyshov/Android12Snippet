@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Android12Snippet-pre31</string>
 
+    <string name="button_next">Next</string>
+
     <!-- notifications -->
     <string name="notification_channel_name">Notification channel</string>
     <string name="notification_channel_description">Notification channel description</string>
@@ -8,7 +10,12 @@
     <string name="notification_text">Notification text</string>
 
     <!-- screen labels -->
+    <string name="label_security_and_privacy">Security and Privacy</string>
     <string name="label_user_experience">User Experience</string>
+
+    <!-- security and privacy -->
+    <string name="security_request_location">Request location permission</string>
+    <string name="security_request_location_hint">On older apps, you don\'t know what location permission you are granting - precise or approximate. Try this</string>
 
     <!-- splash hint -->
     <string name="splash_hint">Check the code - the splash screen is custom-made and makes the app logic more complex.</string>
