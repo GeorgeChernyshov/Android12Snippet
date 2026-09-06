@@ -18,6 +18,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.post31.R
 import com.example.post31.interactor.PermissionInteractor
@@ -26,6 +27,7 @@ import com.example.post31.service.GeolocationService.GeolocationServiceState.Sta
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.components.LocationTableRow
 import com.example.post31.ui.navigation.Screen
+import com.example.post31.ui.theme.Android12SnippetTheme
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
@@ -152,4 +154,34 @@ fun PowerSaverModeBlock() {
             else -> R.string.performance_power_saver_yes
         }
     ))
+}
+
+@Composable
+@Preview
+fun PowerSaverModeBlockPreview() {
+    Android12SnippetTheme {
+        PowerSaverModeBlock()
+    }
+}
+
+@Composable
+@Preview
+fun ToggleLocationUpdatesButtonPreview() {
+    Android12SnippetTheme {
+        ToggleLocationUpdatesButton(
+            isServiceRunning = false,
+            toggleService = {}
+        )
+    }
+}
+
+@Composable
+@Preview
+fun PerformanceScreenPreview() {
+    Android12SnippetTheme {
+        PerformanceScreen(
+            locationServiceState = null,
+            onNextClick = {}
+        )
+    }
 }

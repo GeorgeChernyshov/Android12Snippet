@@ -21,12 +21,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.post31.R
 import com.example.post31.helper.AudioRecorder
 import com.example.post31.interactor.PermissionInteractor
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.navigation.Screen
+import com.example.post31.ui.theme.Android12SnippetTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds
@@ -123,5 +125,29 @@ fun CloseSystemDialogsBlock() {
                 R.string.security_close_system_dialogs_fail
             else R.string.security_close_system_dialogs_success
         ))
+    }
+}
+
+@Composable
+@Preview
+fun CloseSystemDialogsBlockPreview() {
+    Android12SnippetTheme {
+        CloseSystemDialogsBlock()
+    }
+}
+
+@Composable
+@Preview
+fun MicrophoneAccessBlockPreview() {
+    Android12SnippetTheme {
+        MicrophoneAccessBlock()
+    }
+}
+
+@Composable
+@Preview
+fun SecurityAndPrivacyScreenPreview() {
+    Android12SnippetTheme {
+        SecurityAndPrivacyScreen()
     }
 }

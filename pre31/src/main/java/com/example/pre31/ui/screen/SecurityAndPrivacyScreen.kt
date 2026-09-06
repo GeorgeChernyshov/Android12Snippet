@@ -14,10 +14,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pre31.R
 import com.example.pre31.ui.components.AppBar
 import com.example.pre31.ui.navigation.Screen
+import com.example.pre31.ui.theme.Android12SnippetTheme
 
 @Composable
 fun SecurityAndPrivacyScreen() {
@@ -52,5 +54,21 @@ fun LocationPermissionBlock() {
         }) {
             Text(stringResource(R.string.security_request_location))
         }
+    }
+}
+
+@Composable
+@Preview
+fun LocationPermissionBlockPreview() {
+    Android12SnippetTheme {
+        LocationPermissionBlock()
+    }
+}
+
+@Composable
+@Preview
+fun SecurityAndPrivacyScreenPreview() {
+    Android12SnippetTheme {
+        SecurityAndPrivacyScreen()
     }
 }
