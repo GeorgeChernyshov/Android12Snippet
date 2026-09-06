@@ -21,8 +21,19 @@
     <string name="performance_power_saver_yes">Your device should continue giving location updates</string>
     <string name="performance_time_column">Timestamp</string>
 
+    <!-- permissions package visibility -->
+    <string name="permissions_pv_button">Run search</string>
+    <string name="permissions_pv_hint_1">Install pre31 app. It contains a custom permission. If you knew this device has this permission in the declared permissions, you would be able to guess that pre31 app is installed on this device.</string>
+    <string name="permissions_pv_hint_2">Button below runs permission search and shows the result.</string>
+    <string name="permissions_pv_permission_found">We found it!</string>
+    <string name="permissions_pv_permission_not_found">We did not find it :(</string>
+    <string name="permissions_pv_permission_not_found2">But that is great since it means your device is more protected :)</string>
+    <string name="permissions_pv_should_find">Search should succeed on older devices.</string>
+    <string name="permissions_pv_should_not_find">Search should fail since pre31 app is not included into the publicly available intent filter.</string>
+
     <!-- screen labels -->
     <string name="label_performance">Performance</string>
+    <string name="label_permission_pv">Permissions Package Visibility</string>
     <string name="label_security_and_privacy">Security and Privacy</string>
     <string name="label_user_experience">User Experience</string>
     <string name="label_widgets">Widgets and Notifications</string>

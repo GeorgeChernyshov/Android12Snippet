@@ -34,7 +34,9 @@ import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds
 
 @Composable
-fun SecurityAndPrivacyScreen() {
+fun SecurityAndPrivacyScreen(
+    onNextClick: () -> Unit
+) {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.SecurityAndPrivacy.resourceId)) },
         content = {
@@ -46,6 +48,10 @@ fun SecurityAndPrivacyScreen() {
             ) {
                 MicrophoneAccessBlock()
                 CloseSystemDialogsBlock()
+
+                Button(onClick = onNextClick) {
+                    Text(stringResource(R.string.button_next))
+                }
             }
         }
     )
@@ -148,6 +154,6 @@ fun MicrophoneAccessBlockPreview() {
 @Preview
 fun SecurityAndPrivacyScreenPreview() {
     Android12SnippetTheme {
-        SecurityAndPrivacyScreen()
+        SecurityAndPrivacyScreen(onNextClick = {})
     }
 }

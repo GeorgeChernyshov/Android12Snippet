@@ -17,6 +17,7 @@ import com.example.post31.service.GeolocationService
 import com.example.post31.ui.AppViewModel
 import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.screen.PerformanceScreen
+import com.example.post31.ui.screen.PermissionPVScreen
 import com.example.post31.ui.screen.SecurityAndPrivacyScreen
 import com.example.post31.ui.screen.UserExperienceScreen
 import com.example.post31.ui.screen.WidgetsScreen
@@ -83,7 +84,14 @@ fun App(
                 }
             )
 
-            Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen()
+            Screen.PermissionPV -> PermissionPVScreen()
+
+            Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.PermissionPV)
+                }
+            )
+
             Screen.Widgets -> WidgetsScreen()
         }
     }

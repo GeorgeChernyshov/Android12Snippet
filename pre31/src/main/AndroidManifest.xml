@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <permission
+        android:name="com.example.pre31.PermissionToEatDonuts"
+        android:protectionLevel="normal"
+        android:label="Permission to eat donuts"
+        android:permissionGroup="android.permission-group.UNDEFINED" />
 
     <application
         android:allowBackup="true"
