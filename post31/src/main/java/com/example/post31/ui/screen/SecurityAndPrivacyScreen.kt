@@ -48,6 +48,7 @@ fun SecurityAndPrivacyScreen(
             ) {
                 MicrophoneAccessBlock()
                 CloseSystemDialogsBlock()
+                Text(stringResource(R.string.security_app_hibernation))
 
                 Button(onClick = onNextClick) {
                     Text(stringResource(R.string.button_next))

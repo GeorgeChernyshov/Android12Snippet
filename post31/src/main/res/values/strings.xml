@@ -50,6 +50,7 @@
     <string name="label_widgets">Widgets and Notifications</string>
 
     <!-- security and privacy -->
+    <string name="security_app_hibernation">Also, if you don\'t use an app for a couple of months, it goes into hibernation state. This means not only that app permissions are reset, but that app cache is cleared and app is prohibited from running background work including receiving notifications</string>
     <string name="security_close_system_dialogs_button">Press here</string>
     <string name="security_close_system_dialogs_description">Press this button and open notification drawer.</string>
     <string name="security_close_system_dialogs_fail">Android 12 explicitly prohibits closing system dialogs, so the app should crash</string>
