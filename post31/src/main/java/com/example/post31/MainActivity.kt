@@ -21,7 +21,7 @@ import com.example.post31.ui.screen.BackPressChangesScreen
 import com.example.post31.ui.screen.PerformanceScreen
 import com.example.post31.ui.screen.PermissionPVScreen
 import com.example.post31.ui.screen.SecurityAndPrivacyScreen
-import com.example.post31.ui.screen.UserExperienceScreen
+import com.example.post31.ui.screen.ux.UserExperienceScreen
 import com.example.post31.ui.screen.WidgetsScreen
 import com.example.post31.ui.theme.Android12SnippetTheme
 import kotlinx.coroutines.launch

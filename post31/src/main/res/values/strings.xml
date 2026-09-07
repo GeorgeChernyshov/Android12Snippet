@@ -77,6 +77,10 @@
     <string name="ux_immersive_mode_show_transient_bars">Show transient bars</string>
     <string name="ux_overscroll_glow">Glow should appear on overscroll</string>
     <string name="ux_overscroll_stretch">Text should be stretched on overscroll</string>
+    <string name="ux_toasts_button">Show toast</string>
+    <string name="ux_toasts_hint">Press this button to show a toast with long text.</string>
+    <string name="ux_toasts_old">Old toasts can be of any length and only contain simple text.</string>
+    <string name="ux_toasts_new">Toasts were redesigned. Now, they contain app icon and show max of two lines of text.</string>
 
     <!-- web view -->
     <string name="web_hint_all">This Activity should open all URLs</string>
