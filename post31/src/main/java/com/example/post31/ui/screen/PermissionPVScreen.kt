@@ -24,7 +24,7 @@ import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.theme.Android12SnippetTheme
 
 @Composable
-fun PermissionPVScreen() {
+fun PermissionPVScreen(onNextClick: () -> Unit) {
     val pm = LocalContext.current.packageManager
     var found by remember { mutableStateOf<Boolean?>(null) }
 
@@ -62,6 +62,10 @@ fun PermissionPVScreen() {
 
                     null -> {}
                 }
+
+                Button(onClick = onNextClick) {
+                    Text(stringResource(R.string.button_next))
+                }
             }
         }
     )
@@ -71,6 +75,6 @@ fun PermissionPVScreen() {
 @Preview
 fun PermissionPVScreenPreview() {
     Android12SnippetTheme {
-        PermissionPVScreen()
+        PermissionPVScreen(onNextClick = {})
     }
 }

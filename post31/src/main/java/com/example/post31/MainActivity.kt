@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.post31.service.GeolocationService
 import com.example.post31.ui.AppViewModel
 import com.example.post31.ui.navigation.Screen
+import com.example.post31.ui.screen.BackPressChangesScreen
 import com.example.post31.ui.screen.PerformanceScreen
 import com.example.post31.ui.screen.PermissionPVScreen
 import com.example.post31.ui.screen.SecurityAndPrivacyScreen
@@ -43,6 +45,9 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if ((intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) != 0)
+            Log.i(TAG, "Launched from history")
+
         // Handle the splash screen transition.
         val splashScreen = installSplashScreen()
 
@@ -59,7 +64,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         this.unbindService(serviceConnection)
+        Log.i(TAG, "onDestroy called")
         super.onDestroy()
+    }
+
+    companion object {
+        private const val TAG = "Android12Snippet-post31"
     }
 }
 
@@ -71,6 +81,7 @@ fun App(
     Android12SnippetTheme {
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
+            Screen.BackPressChanges -> BackPressChangesScreen()
             Screen.UserExperience -> UserExperienceScreen(
                 onNextClick = {
                     viewModel.setCurrentScreen(Screen.Performance)
@@ -84,7 +95,11 @@ fun App(
                 }
             )
 
-            Screen.PermissionPV -> PermissionPVScreen()
+            Screen.PermissionPV -> PermissionPVScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.BackPressChanges)
+                }
+            )
 
             Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen(
                 onNextClick = {

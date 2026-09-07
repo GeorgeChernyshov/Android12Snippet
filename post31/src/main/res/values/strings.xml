@@ -3,6 +3,16 @@
 
     <string name="button_next">Next</string>
 
+    <!-- back press changes -->
+    <string name="back_press_changes_hint1">Android 12 changed how back press in the root activity functions</string>
+    <string name="back_press_new1">To see the new behavior, press back or swipe to leave the app. Then, reopen the app.</string>
+    <string name="back_press_new2">You will not see the splash screen and the state will be restored. This is because the activity was not finished actually, only hidden. Exactly like if you just switch to another app.</string>
+    <string name="back_press_new3">Also, check the logs. They should show that onDestroy method was not called</string>
+    <string name="back_press_old1">To see old behavior, press back or swipe to leave the app. Then, reopen the app.</string>
+    <string name="back_press_old2">If you reopen an app from the launcher, you will see that app is fully rebooted. Splash screen is shown again and the state is not restored.</string>
+    <string name="back_press_old3">In the logs, you can see that onDestroy method was called</string>
+    <string name="back_press_old4">If you reopen an app from recents menu, instance state should be restored. You can also find this in the logs.</string>
+
     <!-- notifications -->
     <string name="notification_channel_name">Notification channel</string>
     <string name="notification_channel_description">Notification channel description</string>
@@ -32,6 +42,7 @@
     <string name="permissions_pv_should_not_find">Search should fail since pre31 app is not included into the publicly available intent filter.</string>
 
     <!-- screen labels -->
+    <string name="label_back_press_changes">Changes in Back Press</string>
     <string name="label_performance">Performance</string>
     <string name="label_permission_pv">Permissions Package Visibility</string>
     <string name="label_security_and_privacy">Security and Privacy</string>
