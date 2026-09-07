@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -40,18 +41,32 @@ fun SecurityAndPrivacyScreen(
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.SecurityAndPrivacy.resourceId)) },
         content = {
-            Column(
+            LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                MicrophoneAccessBlock()
-                CloseSystemDialogsBlock()
-                Text(stringResource(R.string.security_app_hibernation))
+                item {
+                    MicrophoneAccessBlock()
+                }
 
-                Button(onClick = onNextClick) {
-                    Text(stringResource(R.string.button_next))
+                item {
+                    CloseSystemDialogsBlock()
+                }
+
+                item {
+                    Text(stringResource(R.string.security_app_hibernation))
+                }
+
+                item {
+                    Text(stringResource(R.string.security_exported))
+                }
+
+                item {
+                    Button(onClick = onNextClick) {
+                        Text(stringResource(R.string.button_next))
+                    }
                 }
             }
         }
