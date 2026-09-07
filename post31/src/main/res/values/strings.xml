@@ -60,6 +60,7 @@
     <string name="security_mic_indicator">You should see the indicator in your status bar.</string>
     <string name="security_mic_no_indicator">Recording should start with no indication to the user.</string>
     <string name="security_mic_toggle">Check your Quick Settings. You might see the disable access button. Some manufacturers hide it by default though, so you will have to add it manually.</string>
+    <string name="security_pending_intent_mutability">You also must explicitly declare PendingIntent mutability</string>
     <string name="security_start_recording">Start recording</string>
     <string name="security_stop_recording">Stop recording</string>
 

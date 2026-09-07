@@ -64,6 +64,10 @@ fun SecurityAndPrivacyScreen(
                 }
 
                 item {
+                    Text(stringResource(R.string.security_pending_intent_mutability))
+                }
+
+                item {
                     Button(onClick = onNextClick) {
                         Text(stringResource(R.string.button_next))
                     }
