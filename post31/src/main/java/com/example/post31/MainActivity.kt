@@ -18,6 +18,7 @@ import com.example.post31.service.GeolocationService
 import com.example.post31.ui.AppViewModel
 import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.screen.BackPressChangesScreen
+import com.example.post31.ui.screen.ForegroundServiceLaunchScreen
 import com.example.post31.ui.screen.PerformanceScreen
 import com.example.post31.ui.screen.PermissionPVScreen
 import com.example.post31.ui.screen.SecurityAndPrivacyScreen
@@ -81,7 +82,13 @@ fun App(
     Android12SnippetTheme {
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
-            Screen.BackPressChanges -> BackPressChangesScreen()
+            Screen.BackPressChanges -> BackPressChangesScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.ForegroundServiceLaunch)
+                }
+            )
+
+            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen()
             Screen.UserExperience -> UserExperienceScreen(
                 onNextClick = {
                     viewModel.setCurrentScreen(Screen.Performance)

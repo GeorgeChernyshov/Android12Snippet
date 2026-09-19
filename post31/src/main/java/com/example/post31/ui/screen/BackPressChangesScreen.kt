@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +19,9 @@ import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.theme.Android12SnippetTheme
 
 @Composable
-fun BackPressChangesScreen() {
+fun BackPressChangesScreen(
+    onNextClick: () -> Unit
+) {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.BackPressChanges.resourceId)) },
         content = {
@@ -39,6 +42,10 @@ fun BackPressChangesScreen() {
                     Text(stringResource(R.string.back_press_old3))
                     Text(stringResource(R.string.back_press_old4))
                 }
+
+                Button(onClick = onNextClick) {
+                    Text(stringResource(R.string.button_next))
+                }
             }
         }
     )
@@ -48,6 +55,6 @@ fun BackPressChangesScreen() {
 @Preview
 fun BackPressChangesScreenPreview() {
     Android12SnippetTheme {
-        BackPressChangesScreen()
+        BackPressChangesScreen(onNextClick = {})
     }
 }

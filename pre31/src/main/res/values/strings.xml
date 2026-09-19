@@ -10,8 +10,14 @@
     <string name="notification_text">Notification text</string>
 
     <!-- screen labels -->
+    <string name="label_foreground_service_launch">Foreground Service Launch</string>
     <string name="label_security_and_privacy">Security and Privacy</string>
     <string name="label_user_experience">User Experience</string>
+
+    <!-- foreground service launch -->
+    <string name="fg_launch_hint">In old apps, you can just launch services in the background. Try this:</string>
+    <string name="fg_launch_start">Start Service</string>
+    <string name="fg_launch_stop">Stop Service</string>
 
     <!-- security and privacy -->
     <string name="security_request_location">Request location permission</string>

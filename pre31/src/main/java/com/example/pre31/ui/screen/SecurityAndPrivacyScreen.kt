@@ -22,7 +22,9 @@ import com.example.pre31.ui.navigation.Screen
 import com.example.pre31.ui.theme.Android12SnippetTheme
 
 @Composable
-fun SecurityAndPrivacyScreen() {
+fun SecurityAndPrivacyScreen(
+    onNextClick: () -> Unit
+) {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.SecurityAndPrivacy.resourceId)) },
         content = {
@@ -33,6 +35,10 @@ fun SecurityAndPrivacyScreen() {
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 LocationPermissionBlock()
+
+                Button(onClick = onNextClick) {
+                    Text(stringResource(R.string.button_next))
+                }
             }
         }
     )
@@ -69,6 +75,6 @@ fun LocationPermissionBlockPreview() {
 @Preview
 fun SecurityAndPrivacyScreenPreview() {
     Android12SnippetTheme {
-        SecurityAndPrivacyScreen()
+        SecurityAndPrivacyScreen(onNextClick = {})
     }
 }

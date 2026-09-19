@@ -13,6 +13,13 @@
     <string name="back_press_old3">In the logs, you can see that onDestroy method was called</string>
     <string name="back_press_old4">If you reopen an app from recents menu, instance state should be restored. You can also find this in the logs.</string>
 
+    <!-- foreground service launch -->
+    <string name="fg_launch_hint">Starting with Android 12, you can not simply launch services in the background. Try this:</string>
+    <string name="fg_launch_hint_2">To start service in the background, schedule and exact alarm or use WorkManager. Example is provided below:</string>
+    <string name="fg_launch_start">Start Service</string>
+    <string name="fg_launch_start_proper">Start Service Properly</string>
+    <string name="fg_launch_stop">Stop Service</string>
+
     <!-- notifications -->
     <string name="notification_channel_name">Notification channel</string>
     <string name="notification_channel_description">Notification channel description</string>
@@ -43,6 +50,7 @@
 
     <!-- screen labels -->
     <string name="label_back_press_changes">Changes in Back Press</string>
+    <string name="label_foreground_service_launch">Foreground Service Launch</string>
     <string name="label_performance">Performance</string>
     <string name="label_permission_pv">Permissions Package Visibility</string>
     <string name="label_security_and_privacy">Security and Privacy</string>
