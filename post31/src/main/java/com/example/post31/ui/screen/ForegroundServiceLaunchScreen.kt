@@ -124,6 +124,7 @@ fun ForegroundServiceLaunchScreen() {
                 }
 
                 Text(stringResource(R.string.fg_launch_hint_2))
+                Text(stringResource(R.string.fg_launch_alarm_permission))
 
                 Button(onClick = {
                     if (serviceState?.value?.status == SimpleForegroundService.SimpleServiceState.Status.STARTED)

@@ -14,6 +14,7 @@
     <string name="back_press_old4">If you reopen an app from recents menu, instance state should be restored. You can also find this in the logs.</string>
 
     <!-- foreground service launch -->
+    <string name="fg_launch_alarm_permission">By the way, you need to declare SCHEDULE_EXACT_ALARM permission to do that now. Check it out in application manifest! </string>
     <string name="fg_launch_hint">Starting with Android 12, you can not simply launch services in the background. Try this:</string>
     <string name="fg_launch_hint_2">To start service in the background, schedule and exact alarm or use WorkManager. Example is provided below:</string>
     <string name="fg_launch_start">Start Service</string>
