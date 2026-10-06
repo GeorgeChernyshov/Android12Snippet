@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android") version "2.44" apply true
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -37,6 +39,12 @@ android {
         compose = true
         viewBinding = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.2.0"
+    }
+    hilt {
+        enableAggregatingTask = false
+    }
 }
 
 dependencies {
@@ -63,4 +71,16 @@ dependencies {
 
     //splash screen
     implementation("androidx.core:core-splashscreen:1.0.0-beta02")
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    kapt("com.google.dagger:hilt-compiler:2.44")
+}
+
+configurations.matching {
+    it.name == "kotlinCompilerPluginClasspathDebug" ||
+        it.name == "kotlinCompilerPluginClasspathRelease"
+}.all {
+    dependencies.add(project.dependencies.create("androidx.compose.compiler:compiler:1.2.0"))
 }

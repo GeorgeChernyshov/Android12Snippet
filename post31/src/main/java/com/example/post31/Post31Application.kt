@@ -4,7 +4,9 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationChannelGroup
 import android.app.NotificationManager
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class Post31Application : Application() {
 
     override fun onCreate() {

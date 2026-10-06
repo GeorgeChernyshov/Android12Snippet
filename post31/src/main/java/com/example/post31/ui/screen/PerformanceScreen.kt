@@ -21,9 +21,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.post31.R
-import com.example.post31.interactor.PermissionInteractor
 import com.example.post31.service.GeolocationService
 import com.example.post31.service.GeolocationService.GeolocationServiceState.Status
+import com.example.post31.ui.LocalPermissionInteractor
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.components.LocationTableRow
 import com.example.post31.ui.navigation.Screen
@@ -106,6 +106,7 @@ fun ToggleLocationUpdatesButton(
     toggleService: () -> Unit
 ) {
     val context = LocalContext.current
+    val permissionInteractor = LocalPermissionInteractor.current
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
     ) { result ->
@@ -113,7 +114,7 @@ fun ToggleLocationUpdatesButton(
     }
 
     Button(onClick = {
-        PermissionInteractor(context).invoke(
+        permissionInteractor.invoke(
             permissions = listOf(
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION

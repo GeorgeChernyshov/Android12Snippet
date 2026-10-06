@@ -1,10 +1,16 @@
-package com.example.post31.interactor
+package com.example.post31.interactor.permission
 
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
-class PermissionInteractor(private val context: Context) {
+@ActivityScoped
+class PermissionInteractor @Inject constructor(
+    @ActivityContext private val context: Context
+) {
     fun invoke(
         permissions: List<String>,
         onGranted: () -> Unit,

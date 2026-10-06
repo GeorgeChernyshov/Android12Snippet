@@ -13,6 +13,20 @@
     <string name="back_press_old3">In the logs, you can see that onDestroy method was called</string>
     <string name="back_press_old4">If you reopen an app from recents menu, instance state should be restored. You can also find this in the logs.</string>
 
+    <!-- bluetooth -->
+    <string name="bluetooth_advertise_start">Advertise Bluetooth</string>
+    <string name="bluetooth_advertise_stop">Stop Advertising</string>
+    <string name="bluetooth_connect">Connect</string>
+    <string name="bluetooth_connection_status">Status: %1$s</string>
+    <string name="bluetooth_disconnect">Disconnect</string>
+    <string name="bluetooth_permissions_hint">Android 12 introduced granular Bluetooth permissions instead of old BLUETOOTH and BLUETOOTH_ADMIN. It means we have to check build versions now. Anyway, there are three of them now - to scan, to advertise and to connect.</string>
+    <string name="bluetooth_permissions_hint_old">How Android used to work with Bluetooth was weird. There are two permissions - BLUETOOTH and BLUETOOTH_ADMIN. You can see them both in manifest. First one is needed to scan and connect, second one - to advertise</string>
+    <string name="bluetooth_scan_hint">Press the scan button. You will see new bluetooth-related permission dialog. Weirdly it only allows to accept/decline all of them at once. However, to make this work, you have to promise that Bluetooth will not be used to calculate device location.</string>
+    <string name="bluetooth_scan_hint_old">Press the scan button. You will be greeted with location permission check, which is very weird both to user and to developer. It looks like you have installed malware, but in reality this is necessary for Bluetooth</string>
+    <string name="bluetooth_scan_start">Scan for Bluetooth Devices</string>
+    <string name="bluetooth_scan_stop">Stop Scanning</string>
+    <string name="bluetooth_selected_device">Selected device:</string>
+
     <!-- foreground service launch -->
     <string name="fg_launch_alarm_permission">By the way, you need to declare SCHEDULE_EXACT_ALARM permission to do that now. Check it out in application manifest! </string>
     <string name="fg_launch_hint">Starting with Android 12, you can not simply launch services in the background. Try this:</string>
@@ -51,6 +65,7 @@
 
     <!-- screen labels -->
     <string name="label_back_press_changes">Changes in Back Press</string>
+    <string name="label_bluetooth">Bluetooth</string>
     <string name="label_foreground_service_launch">Foreground Service Launch</string>
     <string name="label_performance">Performance</string>
     <string name="label_permission_pv">Permissions Package Visibility</string>

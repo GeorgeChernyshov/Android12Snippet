@@ -10,14 +10,19 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.post31.data.PermissionsRepository
 import com.example.post31.service.GeolocationService
+import com.example.post31.interactor.permission.PermissionInteractor
 import com.example.post31.ui.AppViewModel
+import com.example.post31.ui.LocalPermissionInteractor
 import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.screen.BackPressChangesScreen
+import com.example.post31.ui.screen.bluetooth.BluetoothScreen
 import com.example.post31.ui.screen.ForegroundServiceLaunchScreen
 import com.example.post31.ui.screen.PerformanceScreen
 import com.example.post31.ui.screen.PermissionPVScreen
@@ -25,9 +30,15 @@ import com.example.post31.ui.screen.SecurityAndPrivacyScreen
 import com.example.post31.ui.screen.ux.UserExperienceScreen
 import com.example.post31.ui.screen.WidgetsScreen
 import com.example.post31.ui.theme.Android12SnippetTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject lateinit var permissionInteractor: PermissionInteractor
+    @Inject lateinit var permissionsRepository: PermissionsRepository
 
     private var binder: GeolocationService.GeolocationServiceBinder? = null
 
@@ -60,12 +71,19 @@ class MainActivity : ComponentActivity() {
             Context.BIND_AUTO_CREATE
         )
 
-        setContent { App(binder = { binder }) }
+        permissionsRepository.attach(this)
+
+        setContent {
+            CompositionLocalProvider(LocalPermissionInteractor provides permissionInteractor) {
+                App(binder = { binder })
+            }
+        }
     }
 
     override fun onDestroy() {
         this.unbindService(serviceConnection)
         Log.i(TAG, "onDestroy called")
+        permissionsRepository.detach()
         super.onDestroy()
     }
 
@@ -88,7 +106,14 @@ fun App(
                 }
             )
 
-            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen()
+            Screen.Bluetooth -> BluetoothScreen()
+
+            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.Bluetooth)
+                }
+            )
+
             Screen.UserExperience -> UserExperienceScreen(
                 onNextClick = {
                     viewModel.setCurrentScreen(Screen.Performance)
