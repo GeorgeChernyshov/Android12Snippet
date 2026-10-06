@@ -50,6 +50,10 @@ fun UserExperienceScreen(onNextClick: () -> Unit) {
                 }
 
                 item {
+                    Text(stringResource(R.string.ux_material))
+                }
+
+                item {
                     ScrollDemoBlock()
                 }
 

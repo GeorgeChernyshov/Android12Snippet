@@ -102,6 +102,7 @@
     <string name="ux_immersive_mode_show_bars_by_swipe">Show bars by swipe</string>
     <string name="ux_immersive_mode_show_bars_by_touch">Show bars by touch</string>
     <string name="ux_immersive_mode_show_transient_bars">Show transient bars</string>
+    <string name="ux_material">Material Design was introduced with Android 12!</string>
     <string name="ux_overscroll_glow">Glow should appear on overscroll</string>
     <string name="ux_overscroll_stretch">Text should be stretched on overscroll</string>
     <string name="ux_toasts_button">Show toast</string>
