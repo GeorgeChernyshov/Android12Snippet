@@ -13,6 +13,7 @@
     <string name="label_foreground_service_launch">Foreground Service Launch</string>
     <string name="label_security_and_privacy">Security and Privacy</string>
     <string name="label_user_experience">User Experience</string>
+    <string name="label_widgets">Widgets</string>
 
     <!-- foreground service launch -->
     <string name="fg_launch_hint">In old apps, you can just launch services in the background. Try this:</string>
@@ -36,4 +37,14 @@
     <string name="web_hint_twitch">This Activity should only open twitch links</string>
     <string name="web_open_google">Open Google link</string>
     <string name="web_open_twitch">Open Twitch link</string>
+
+    <!-- widgets -->
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="widget_description_unstyled">This is an unstyled widget</string>
+    <string name="widget_text_unstyled">Unstyled</string>
+    <string name="widget_screen_text">This app contains several widgets. One is stylized using old API to show rounded corners, another one is not. Put them on the screen to see the difference</string>
+    <string name="widget_screen_text2">However, on newer devices, both widgets will have rounded corners - this is a deliberate Android design choice</string>
+
 </resources>

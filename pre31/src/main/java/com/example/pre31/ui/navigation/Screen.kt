@@ -7,4 +7,5 @@ sealed class Screen(val route: String, @StringRes val resourceId: Int) {
     object ForegroundServiceLaunch : Screen("foregroundServiceLaunch", R.string.label_foreground_service_launch)
     object SecurityAndPrivacy : Screen("securityAndPrivacy", R.string.label_security_and_privacy)
     object UserExperience : Screen("userExperience", R.string.label_user_experience)
+    object Widgets : Screen("widgets", R.string.label_widgets)
 }

@@ -106,7 +106,11 @@ fun App(
                 }
             )
 
-            Screen.Bluetooth -> BluetoothScreen()
+            Screen.Bluetooth -> BluetoothScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.Widgets)
+                }
+            )
 
             Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen(
                 onNextClick = {

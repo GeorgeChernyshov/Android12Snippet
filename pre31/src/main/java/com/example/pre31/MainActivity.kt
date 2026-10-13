@@ -11,6 +11,7 @@ import com.example.pre31.ui.navigation.Screen
 import com.example.pre31.ui.screen.ForegroundServiceLaunchScreen
 import com.example.pre31.ui.screen.SecurityAndPrivacyScreen
 import com.example.pre31.ui.screen.UserExperienceScreen
+import com.example.pre31.ui.screen.WidgetsScreen
 import com.example.pre31.ui.theme.Android12SnippetTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +28,12 @@ fun App(
     Android12SnippetTheme {
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
-            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen()
+            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen(
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.Widgets)
+                }
+            )
+
             Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen(
                 onNextClick = {
                     viewModel.setCurrentScreen(Screen.ForegroundServiceLaunch)
@@ -39,6 +45,8 @@ fun App(
                     viewModel.setCurrentScreen(Screen.SecurityAndPrivacy)
                 }
             )
+
+            Screen.Widgets -> WidgetsScreen()
         }
     }
 }

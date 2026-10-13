@@ -121,7 +121,18 @@
     <string name="web_request_association">Associate your app with the domains declared in manifest if needed</string>
     <string name="web_request_association_button">Associate</string>
     <string name="web_title">Web Intents changes</string>
+
+    <!-- widgets -->
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="widget_configuration_save">Save</string>
+    <string name="widget_screen_text">This app contains a widget. It is stylized to show rounded corners.</string>
+    <string name="widget_screen_text2_new">These corners are device-specific to accommodate for new rounding behavior.</string>
+    <string name="widget_screen_text2_old">These corners are static.</string>
+    <string name="widget_screen_text3">Dynamic colors are also integrated with widgets!</string>
+    <string name="widget_screen_text4_new">This widget is configurable, but you might not even notice it. Starting with Android 12, configuration is not mandatory.</string>
+    <string name="widget_screen_text4_old">This widget is configurable, so you will be presented with configuration screen upon placing it.</string>
+    <string name="widget_screen_text5">This widget is made expandable using the new API! Shame it doesn\'t work on old devices/</string>
+    <string name="widget_text_expanded">This is a longer text that you should only see on expanded widgets! If you see it - great!</string>
 </resources>

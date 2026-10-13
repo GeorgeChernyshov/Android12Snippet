@@ -41,6 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".WebViewActivity"
             android:exported="true"
@@ -59,8 +60,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.widgets.SimpleWidgetConfigurationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Android12Snippet">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
         <receiver
-            android:name=".ui.SimpleWidget"
+            android:name=".ui.widgets.SimpleWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

@@ -29,7 +29,7 @@ import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.theme.Android12SnippetTheme
 
 @Composable
-fun BluetoothScreen() {
+fun BluetoothScreen(onNextClick: () -> Unit) {
     val viewModel: BluetoothScreenViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
@@ -50,7 +50,8 @@ fun BluetoothScreen() {
         connectToDevice = viewModel::connectToDevice,
         disconnectFromDevice = viewModel::disconnectFromDevice,
         setSelectedDevice = viewModel::setSelectedDevice,
-        displayNames = viewModel::displayNames
+        displayNames = viewModel::displayNames,
+        onNextClick = onNextClick
     )
 }
 
@@ -64,7 +65,8 @@ fun BluetoothScreenContent(
     connectToDevice: (BluetoothDevice) -> Unit,
     disconnectFromDevice: () -> Unit,
     setSelectedDevice: (BluetoothDevice) -> Unit,
-    displayNames: () -> Unit
+    displayNames: () -> Unit,
+    onNextClick: () -> Unit
 ) {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.Bluetooth.resourceId)) },
@@ -129,6 +131,12 @@ fun BluetoothScreenContent(
                                 }
                         }
                     )
+                }
+
+                item {
+                    Button(onClick = onNextClick) {
+                        Text(stringResource(R.string.button_next))
+                    }
                 }
             }
         }
@@ -284,7 +292,8 @@ fun BluetoothScreenContentPreview() {
             connectToDevice = {},
             disconnectFromDevice = {},
             setSelectedDevice = {},
-            displayNames = {}
+            displayNames = {},
+            onNextClick = {}
         )
     }
 }
