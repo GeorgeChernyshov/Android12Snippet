@@ -35,6 +35,12 @@
     <string name="fg_launch_start_proper">Start Service Properly</string>
     <string name="fg_launch_stop">Stop Service</string>
 
+    <!-- material -->
+    <string name="material_hint">Android 12 introduced Material 3, or Material You. It\'s main feature is dynamic color theme.</string>
+    <string name="material_dynamic_colors_button">Toggle</string>
+    <string name="material_dynamic_colors_off">Dynamic colors are disabled</string>
+    <string name="material_dynamic_colors_on">Dynamic colors are enabled</string>
+
     <!-- notifications -->
     <string name="notification_channel_name">Notification channel</string>
     <string name="notification_channel_description">Notification channel description</string>
@@ -67,6 +73,7 @@
     <string name="label_back_press_changes">Changes in Back Press</string>
     <string name="label_bluetooth">Bluetooth</string>
     <string name="label_foreground_service_launch">Foreground Service Launch</string>
+    <string name="label_material">Material You</string>
     <string name="label_performance">Performance</string>
     <string name="label_permission_pv">Permissions Package Visibility</string>
     <string name="label_security_and_privacy">Security and Privacy</string>
@@ -102,7 +109,6 @@
     <string name="ux_immersive_mode_show_bars_by_swipe">Show bars by swipe</string>
     <string name="ux_immersive_mode_show_bars_by_touch">Show bars by touch</string>
     <string name="ux_immersive_mode_show_transient_bars">Show transient bars</string>
-    <string name="ux_material">Material Design was introduced with Android 12!</string>
     <string name="ux_overscroll_glow">Glow should appear on overscroll</string>
     <string name="ux_overscroll_stretch">Text should be stretched on overscroll</string>
     <string name="ux_toasts_button">Show toast</string>

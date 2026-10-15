@@ -24,6 +24,7 @@ import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.screen.BackPressChangesScreen
 import com.example.post31.ui.screen.bluetooth.BluetoothScreen
 import com.example.post31.ui.screen.ForegroundServiceLaunchScreen
+import com.example.post31.ui.screen.MaterialScreen
 import com.example.post31.ui.screen.PerformanceScreen
 import com.example.post31.ui.screen.PermissionPVScreen
 import com.example.post31.ui.screen.SecurityAndPrivacyScreen
@@ -97,7 +98,9 @@ fun App(
     viewModel: AppViewModel = viewModel(),
     binder: () -> GeolocationService.GeolocationServiceBinder?
 ) {
-    Android12SnippetTheme {
+    Android12SnippetTheme(
+        dynamicColor = viewModel.dynamicColorEnabled.value
+    ) {
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
             Screen.BackPressChanges -> BackPressChangesScreen(
@@ -115,6 +118,18 @@ fun App(
             Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen(
                 onNextClick = {
                     viewModel.setCurrentScreen(Screen.Bluetooth)
+                }
+            )
+
+            Screen.Material -> MaterialScreen(
+                dynamicColorEnabled = viewModel.dynamicColorEnabled.value,
+                toggleDynamicColor = {
+                    viewModel.setDynamicColorEnabled(
+                        !viewModel.dynamicColorEnabled.value
+                    )
+                },
+                onNextClick = {
+                    viewModel.setCurrentScreen(Screen.UserExperience)
                 }
             )
 

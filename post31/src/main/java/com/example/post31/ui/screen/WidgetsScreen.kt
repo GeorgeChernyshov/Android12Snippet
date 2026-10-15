@@ -11,10 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.post31.R
 import com.example.post31.ui.components.AppBar
 import com.example.post31.ui.navigation.Screen
+import com.example.post31.ui.theme.Android12SnippetTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,4 +53,12 @@ fun WidgetsScreen() {
             }
         }
     )
+}
+
+@Composable
+@Preview
+fun WidgetsScreenPreview() {
+    Android12SnippetTheme {
+        WidgetsScreen()
+    }
 }
