@@ -1,4 +1,4 @@
-package com.example.post31.ui.screen
+package com.example.post31.ui.screen.changes
 
 import android.os.Build
 import androidx.compose.foundation.layout.Arrangement

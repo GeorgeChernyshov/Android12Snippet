@@ -1,10 +1,9 @@
-package com.example.post31.ui.screen.ux
+package com.example.post31.ui.screen.newfeatures.ux
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -18,7 +17,7 @@ import com.example.post31.ui.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UserExperienceScreen(onNextClick: () -> Unit) {
+fun UserExperienceScreen() {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.UserExperience.resourceId)) },
         content = {
@@ -58,12 +57,6 @@ fun UserExperienceScreen(onNextClick: () -> Unit) {
 
                 item {
                     ToastsRedesignBlock()
-                }
-
-                item {
-                    Button(onClick = onNextClick) {
-                        Text(stringResource(R.string.button_next))
-                    }
                 }
             }
         }

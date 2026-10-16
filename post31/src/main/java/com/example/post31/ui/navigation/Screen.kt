@@ -5,9 +5,12 @@ import com.example.post31.R
 
 sealed class Screen(val route: String, @StringRes val resourceId: Int) {
     object BackPressChanges : Screen("backPressChanges", R.string.label_back_press_changes)
+    object BehaviorChanges : Screen("behaviorChanges", R.string.label_behavior_changes)
     object Bluetooth : Screen("bluetooth", R.string.label_bluetooth)
     object ForegroundServiceLaunch : Screen("foregroundServiceLaunch", R.string.label_foreground_service_launch)
+    object Main : Screen("main", R.string.label_main)
     object Material : Screen("material", R.string.label_material)
+    object NewFeatures : Screen("newFeatures", R.string.label_new_features)
     object Performance : Screen("performance", R.string.label_performance)
     object PermissionPV : Screen("permissionPackageVisibility", R.string.label_permission_pv)
     object SecurityAndPrivacy : Screen("securityAndPrivacy", R.string.label_security_and_privacy)

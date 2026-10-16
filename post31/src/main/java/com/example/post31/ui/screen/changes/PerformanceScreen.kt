@@ -1,4 +1,4 @@
-package com.example.post31.ui.screen
+package com.example.post31.ui.screen.changes
 
 import android.Manifest
 import android.os.Build

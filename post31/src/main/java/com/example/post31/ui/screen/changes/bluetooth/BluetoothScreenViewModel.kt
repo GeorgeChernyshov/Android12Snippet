@@ -1,4 +1,4 @@
-package com.example.post31.ui.screen.bluetooth
+package com.example.post31.ui.screen.changes.bluetooth
 
 import android.Manifest
 import android.os.Build

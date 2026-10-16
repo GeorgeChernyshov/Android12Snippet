@@ -1,4 +1,4 @@
-package com.example.post31.ui.screen.ux
+package com.example.post31.ui.screen.newfeatures.ux
 
 import android.os.Build
 import android.view.WindowManager

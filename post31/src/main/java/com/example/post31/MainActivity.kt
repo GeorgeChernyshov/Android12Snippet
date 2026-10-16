@@ -19,17 +19,20 @@ import com.example.post31.data.PermissionsRepository
 import com.example.post31.service.GeolocationService
 import com.example.post31.interactor.permission.PermissionInteractor
 import com.example.post31.ui.AppViewModel
+import com.example.post31.ui.LocalBackHandler
 import com.example.post31.ui.LocalPermissionInteractor
 import com.example.post31.ui.navigation.Screen
-import com.example.post31.ui.screen.BackPressChangesScreen
-import com.example.post31.ui.screen.bluetooth.BluetoothScreen
-import com.example.post31.ui.screen.ForegroundServiceLaunchScreen
-import com.example.post31.ui.screen.MaterialScreen
-import com.example.post31.ui.screen.PerformanceScreen
-import com.example.post31.ui.screen.PermissionPVScreen
-import com.example.post31.ui.screen.SecurityAndPrivacyScreen
-import com.example.post31.ui.screen.ux.UserExperienceScreen
-import com.example.post31.ui.screen.WidgetsScreen
+import com.example.post31.ui.screen.MainScreen
+import com.example.post31.ui.screen.changes.BackPressChangesScreen
+import com.example.post31.ui.screen.changes.bluetooth.BluetoothScreen
+import com.example.post31.ui.screen.changes.ForegroundServiceLaunchScreen
+import com.example.post31.ui.screen.newfeatures.MaterialScreen
+import com.example.post31.ui.screen.changes.PerformanceScreen
+import com.example.post31.ui.screen.changes.PermissionPVScreen
+import com.example.post31.ui.screen.changes.SecurityAndPrivacyScreen
+import com.example.post31.ui.screen.newfeatures.NewFeaturesScreen
+import com.example.post31.ui.screen.newfeatures.ux.UserExperienceScreen
+import com.example.post31.ui.screen.newfeatures.WidgetsScreen
 import com.example.post31.ui.theme.Android12SnippetTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -75,8 +78,19 @@ class MainActivity : ComponentActivity() {
         permissionsRepository.attach(this)
 
         setContent {
-            CompositionLocalProvider(LocalPermissionInteractor provides permissionInteractor) {
-                App(binder = { binder })
+            val viewModel: AppViewModel = viewModel()
+
+            CompositionLocalProvider(
+                LocalPermissionInteractor provides permissionInteractor,
+                LocalBackHandler provides {
+                    if (!viewModel.navigateBack())
+                        finish()
+                }
+            ) {
+                App(
+                    viewModel = viewModel,
+                    binder = { binder }
+                )
             }
         }
     }
@@ -95,7 +109,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App(
-    viewModel: AppViewModel = viewModel(),
+    viewModel: AppViewModel,
     binder: () -> GeolocationService.GeolocationServiceBinder?
 ) {
     Android12SnippetTheme(
@@ -104,10 +118,10 @@ fun App(
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
             Screen.BackPressChanges -> BackPressChangesScreen(
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.ForegroundServiceLaunch)
-                }
+                onNextClick = { viewModel.navigateTo(Screen.Main) }
             )
+
+            Screen.BehaviorChanges -> {}
 
             Screen.Bluetooth -> BluetoothScreen(
                 onNextClick = {
@@ -121,6 +135,8 @@ fun App(
                 }
             )
 
+            Screen.Main -> MainScreen(onButtonClick = viewModel::navigateTo)
+
             Screen.Material -> MaterialScreen(
                 dynamicColorEnabled = viewModel.dynamicColorEnabled.value,
                 toggleDynamicColor = {
@@ -129,15 +145,15 @@ fun App(
                     )
                 },
                 onNextClick = {
-                    viewModel.setCurrentScreen(Screen.UserExperience)
+                    viewModel.navigateTo(Screen.Widgets)
                 }
             )
 
-            Screen.UserExperience -> UserExperienceScreen(
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.Performance)
-                }
+            Screen.NewFeatures -> NewFeaturesScreen(
+                onButtonClick = viewModel::navigateTo
             )
+
+            Screen.UserExperience -> UserExperienceScreen()
 
             Screen.Performance -> PerformanceScreen(
                 locationServiceState = binder()?.state,

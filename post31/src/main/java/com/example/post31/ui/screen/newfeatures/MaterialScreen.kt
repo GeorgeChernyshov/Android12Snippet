@@ -1,10 +1,10 @@
-package com.example.post31.ui.screen
+package com.example.post31.ui.screen.newfeatures
 
-import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -20,9 +20,13 @@ import com.example.post31.ui.theme.Android12SnippetTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WidgetsScreen() {
+fun MaterialScreen(
+    dynamicColorEnabled: Boolean,
+    toggleDynamicColor: () -> Unit,
+    onNextClick: () -> Unit
+) {
     Scaffold(
-        topBar = { AppBar(name = stringResource(id = Screen.Widgets.resourceId)) },
+        topBar = { AppBar(name = stringResource(id = Screen.Material.resourceId)) },
         content = {
             Column(
                 modifier = Modifier
@@ -30,25 +34,20 @@ fun WidgetsScreen() {
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text(stringResource(R.string.widget_screen_text))
-                Text(stringResource(
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-                        R.string.widget_screen_text2_new
-                    else R.string.widget_screen_text2_old
-                ))
+                Text(stringResource(R.string.material_hint))
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    Text(stringResource(R.string.widget_screen_text3))
+                Text(
+                    if (dynamicColorEnabled)
+                        stringResource(R.string.material_dynamic_colors_on)
+                    else stringResource(R.string.material_dynamic_colors_off)
+                )
+
+                Button(onClick = toggleDynamicColor) {
+                    Text(stringResource(R.string.material_dynamic_colors_button))
                 }
 
-                Text(stringResource(
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-                        R.string.widget_screen_text4_new
-                    else R.string.widget_screen_text4_old
-                ))
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    Text(stringResource(R.string.widget_screen_text5))
+                Button(onClick = onNextClick) {
+                    Text(stringResource(R.string.button_next))
                 }
             }
         }
@@ -57,8 +56,12 @@ fun WidgetsScreen() {
 
 @Composable
 @Preview
-fun WidgetsScreenPreview() {
+fun MaterialScreenPreview() {
     Android12SnippetTheme {
-        WidgetsScreen()
+        MaterialScreen(
+            dynamicColorEnabled = true,
+            toggleDynamicColor = {},
+            onNextClick = {}
+        )
     }
 }

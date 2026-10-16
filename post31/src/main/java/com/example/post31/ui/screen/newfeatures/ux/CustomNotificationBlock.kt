@@ -1,4 +1,4 @@
-package com.example.post31.ui.screen.ux
+package com.example.post31.ui.screen.newfeatures.ux
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
