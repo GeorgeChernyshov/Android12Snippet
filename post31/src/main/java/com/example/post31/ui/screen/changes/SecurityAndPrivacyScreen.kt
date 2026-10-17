@@ -37,9 +37,7 @@ import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SecurityAndPrivacyScreen(
-    onNextClick: () -> Unit
-) {
+fun SecurityAndPrivacyScreen() {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.SecurityAndPrivacy.resourceId)) },
         content = {
@@ -67,12 +65,6 @@ fun SecurityAndPrivacyScreen(
 
                 item {
                     Text(stringResource(R.string.security_pending_intent_mutability))
-                }
-
-                item {
-                    Button(onClick = onNextClick) {
-                        Text(stringResource(R.string.button_next))
-                    }
                 }
             }
         }
@@ -177,6 +169,6 @@ fun MicrophoneAccessBlockPreview() {
 @Preview
 fun SecurityAndPrivacyScreenPreview() {
     Android12SnippetTheme {
-        SecurityAndPrivacyScreen(onNextClick = {})
+        SecurityAndPrivacyScreen()
     }
 }

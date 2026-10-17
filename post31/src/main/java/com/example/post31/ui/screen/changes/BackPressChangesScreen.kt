@@ -21,9 +21,7 @@ import com.example.post31.ui.theme.Android12SnippetTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BackPressChangesScreen(
-    onNextClick: () -> Unit
-) {
+fun BackPressChangesScreen() {
     Scaffold(
         topBar = { AppBar(name = stringResource(id = Screen.BackPressChanges.resourceId)) },
         content = {
@@ -44,10 +42,6 @@ fun BackPressChangesScreen(
                     Text(stringResource(R.string.back_press_old3))
                     Text(stringResource(R.string.back_press_old4))
                 }
-
-                Button(onClick = onNextClick) {
-                    Text(stringResource(R.string.button_next))
-                }
             }
         }
     )
@@ -57,6 +51,6 @@ fun BackPressChangesScreen(
 @Preview
 fun BackPressChangesScreenPreview() {
     Android12SnippetTheme {
-        BackPressChangesScreen(onNextClick = {})
+        BackPressChangesScreen()
     }
 }

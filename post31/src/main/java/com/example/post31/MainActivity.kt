@@ -24,6 +24,7 @@ import com.example.post31.ui.LocalPermissionInteractor
 import com.example.post31.ui.navigation.Screen
 import com.example.post31.ui.screen.MainScreen
 import com.example.post31.ui.screen.changes.BackPressChangesScreen
+import com.example.post31.ui.screen.changes.BehaviorChangesScreen
 import com.example.post31.ui.screen.changes.bluetooth.BluetoothScreen
 import com.example.post31.ui.screen.changes.ForegroundServiceLaunchScreen
 import com.example.post31.ui.screen.newfeatures.MaterialScreen
@@ -117,26 +118,15 @@ fun App(
     ) {
         val context = LocalContext.current
         when (viewModel.currentScreen.value) {
-            Screen.BackPressChanges -> BackPressChangesScreen(
-                onNextClick = { viewModel.navigateTo(Screen.Main) }
+            Screen.BackPressChanges -> BackPressChangesScreen()
+            Screen.BehaviorChanges -> BehaviorChangesScreen(
+                onButtonClick = viewModel::navigateTo
             )
 
-            Screen.BehaviorChanges -> {}
 
-            Screen.Bluetooth -> BluetoothScreen(
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.Widgets)
-                }
-            )
-
-            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen(
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.Bluetooth)
-                }
-            )
-
+            Screen.Bluetooth -> BluetoothScreen()
+            Screen.ForegroundServiceLaunch -> ForegroundServiceLaunchScreen()
             Screen.Main -> MainScreen(onButtonClick = viewModel::navigateTo)
-
             Screen.Material -> MaterialScreen(
                 dynamicColorEnabled = viewModel.dynamicColorEnabled.value,
                 toggleDynamicColor = {
@@ -154,26 +144,12 @@ fun App(
             )
 
             Screen.UserExperience -> UserExperienceScreen()
-
             Screen.Performance -> PerformanceScreen(
                 locationServiceState = binder()?.state,
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.SecurityAndPrivacy)
-                }
             )
 
-            Screen.PermissionPV -> PermissionPVScreen(
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.BackPressChanges)
-                }
-            )
-
-            Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen(
-                onNextClick = {
-                    viewModel.setCurrentScreen(Screen.PermissionPV)
-                }
-            )
-
+            Screen.PermissionPV -> PermissionPVScreen()
+            Screen.SecurityAndPrivacy -> SecurityAndPrivacyScreen()
             Screen.Widgets -> WidgetsScreen()
         }
     }

@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ForegroundServiceLaunchScreen(onNextClick: () -> Unit) {
+fun ForegroundServiceLaunchScreen() {
     val context = LocalContext.current as MainActivity
     val lifecycleOwner = LocalLifecycleOwner.current
     var binder by remember { mutableStateOf<SimpleForegroundService.SimpleServiceBinder?>(null) }
@@ -148,10 +148,6 @@ fun ForegroundServiceLaunchScreen(onNextClick: () -> Unit) {
                         else R.string.fg_launch_start_proper
                     ))
                 }
-
-                Button(onClick = onNextClick) {
-                    Text(stringResource(R.string.button_next))
-                }
             }
         }
     )
@@ -163,6 +159,6 @@ private const val SERVICE_START_DELAY_MILLIS = 10_000L
 @Preview
 fun ForegroundServiceLaunchScreenPreview() {
     Android12SnippetTheme {
-        ForegroundServiceLaunchScreen(onNextClick = {})
+        ForegroundServiceLaunchScreen()
     }
 }

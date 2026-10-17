@@ -26,7 +26,7 @@ import com.example.post31.ui.theme.Android12SnippetTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PermissionPVScreen(onNextClick: () -> Unit) {
+fun PermissionPVScreen() {
     val pm = LocalContext.current.packageManager
     var found by remember { mutableStateOf<Boolean?>(null) }
 
@@ -64,10 +64,6 @@ fun PermissionPVScreen(onNextClick: () -> Unit) {
 
                     null -> {}
                 }
-
-                Button(onClick = onNextClick) {
-                    Text(stringResource(R.string.button_next))
-                }
             }
         }
     )
@@ -77,6 +73,6 @@ fun PermissionPVScreen(onNextClick: () -> Unit) {
 @Preview
 fun PermissionPVScreenPreview() {
     Android12SnippetTheme {
-        PermissionPVScreen(onNextClick = {})
+        PermissionPVScreen()
     }
 }

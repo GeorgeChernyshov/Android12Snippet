@@ -34,8 +34,7 @@ import kotlinx.coroutines.flow.StateFlow
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PerformanceScreen(
-    locationServiceState: StateFlow<GeolocationService.GeolocationServiceState>?,
-    onNextClick: () -> Unit
+    locationServiceState: StateFlow<GeolocationService.GeolocationServiceState>?
 ) {
     val context = LocalContext.current
         .applicationContext
@@ -89,12 +88,6 @@ fun PerformanceScreen(
                             location = location.locationString,
                             timestamp = location.timeString
                         )
-                    }
-                }
-
-                item {
-                    Button(onClick = onNextClick) {
-                        Text(stringResource(R.string.button_next))
                     }
                 }
             }
@@ -182,9 +175,6 @@ fun ToggleLocationUpdatesButtonPreview() {
 @Preview
 fun PerformanceScreenPreview() {
     Android12SnippetTheme {
-        PerformanceScreen(
-            locationServiceState = null,
-            onNextClick = {}
-        )
+        PerformanceScreen(locationServiceState = null)
     }
 }
